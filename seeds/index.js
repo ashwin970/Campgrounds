@@ -26,7 +26,7 @@ db.once("open",()=>{
 
 const seedDB = async()=>{
     await Campground.deleteMany({});
-    for (let i=0; i<50; i++){
+    for (let i=0; i<10; i++){
         const random = Math.floor(Math.random()*1000);
         const c=new Campground({
             location:`${cities[random].city}, ${cities[random].state}`,

@@ -1,26 +1,50 @@
 <% layout('campgrounds/layouts/boilerplate.ejs') %> 
-    <h1> Campground Show </h1>
-    <br>
-    <br>
-    <h2> <%= campground.title %>  </h2>
-    <br>
-    <img src="<%= campground.image %> " alt=""> 
-    <br>
-    <br>
-    <h3> <%= campground.location %>  </h3>
-
-    <h4> $<%= campground.price %> </h4>
-
-
-    <br>
-    <form action="/campgrounds/<%= campground._id %>?_method=DELETE " method="POST">
-        <button> Delete </button>
-        <br>
+   <!-- <h1 class="text-center mb-3" > Campground Show </h1>
     
-    </form>
+   <h2 class="mb-3"> <%= campground.title %>  </h2>
+    
+   <h3 class="mb-2"> <%= campground.location %>  </h3>
+
+   <h4 class="mb-3"> $<%= campground.price %> </h4>
+    
+   <img src="<%= campground.image %> " alt=""> 
+    
+   
+    
+   <form class="mt-4" action="/campgrounds/<%= campground._id %>?_method=DELETE " method="POST">
+        <button class="btn btn-dark"> Delete </button>
+    
+    </form> -->
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card" >
+                <img src="<%= campground.image %> " class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title"> <%= campground.title %>  </h5>
+                  <p class="card-text"><%= campground.description %> </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-muted"><%= campground.location %></li>
+                  <li class="list-group-item">$<%= campground.price %></li>
+                </ul>
+                <div class="card-body">
+                  <a href="/campgrounds/<%= campground._id %>/edit " class="card-link btn btn-info"> Edit </a>
+                  <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE " method="POST">
+                    <button class="btn btn-dark"> Delete </button>
+                </form>
+                <a href="/campgrounds" class="btn btn-info" > Back to Campgrounds </a>
+                </div>
+              </div>
+
+        </div>
+        
+    </div>
+
+    
 
 
-    <footer>
+    <!-- <footer>
         <br>
         <a href="/campgrounds/<%= campground._id %>/edit "> edit campground </a>
         <br>
@@ -30,6 +54,6 @@
 
 
 
-    </footer>
+    </footer> -->
 
     
