@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost:27017/yelpcamp',{
 });
 
 const sample = array => array[Math.floor(Math.random()*array.length)];
+const price = Math.floor(Math.random()*20)+10;
 
 const db = mongoose.connection;
 db.on("error",console.error.bind(console, "connection error:"));
@@ -29,7 +30,11 @@ const seedDB = async()=>{
         const random = Math.floor(Math.random()*1000);
         const c=new Campground({
             location:`${cities[random].city}, ${cities[random].state}`,
-            title: `${sample(descriptors)} ${sample(places)}`
+            title: `${sample(descriptors)} ${sample(places)}`,
+            image: "https://source.unsplash.com/collection/460289/1600x900",
+            price
+            
+            
 
 
         })

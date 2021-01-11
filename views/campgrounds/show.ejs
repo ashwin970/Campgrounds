@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Show </title>
-</head>
-<body>
+<% layout('campgrounds/layouts/boilerplate.ejs') %> 
     <h1> Campground Show </h1>
+    <br>
+    <br>
     <h2> <%= campground.title %>  </h2>
+    <br>
+    <img src="<%= campground.image %> " alt=""> 
+    <br>
+    <br>
     <h3> <%= campground.location %>  </h3>
 
+    <h4> $<%= campground.price %> </h4>
 
+
+    <br>
     <form action="/campgrounds/<%= campground._id %>?_method=DELETE " method="POST">
         <button> Delete </button>
+        <br>
     
     </form>
 
 
     <footer>
-
+        <br>
         <a href="/campgrounds/<%= campground._id %>/edit "> edit campground </a>
         <br>
         <br>
@@ -30,5 +33,3 @@
     </footer>
 
     
-</body>
-</html>

@@ -5,6 +5,7 @@ const mongodb = require("mongodb");
 const path = require("path");
 const methodOverride = require('method-override');
 const Campground = require("./models/campground");
+const ejsMate = require('ejs-mate');
 
 mongoose.connect('mongodb://localhost:27017/yelpcamp',{
     useNewUrlParser: true,
@@ -29,6 +30,7 @@ app.use(methodOverride('_method'));
 //     res.send(camp);
 // })
 
+app.engine('ejs',ejsMate);
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'));
 
