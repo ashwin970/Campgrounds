@@ -2,6 +2,19 @@
     <% layout('campgrounds/layouts/boilerplate.ejs') %> 
     <br>
     <br>
-        <h1> Welcomw to the Campground!!! The Massive project </h1>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        ScrollReveal({ reset: true });
+       
+    </script>
+       <h2 class="headline"> Welcome to </h2>
+       <h1 class="tagline"> The Campgrounds </h1>
+       <h2 class="punchline"> a massive project !!!</h2>
+
+        <script >  
+            ScrollReveal().reveal('.headline',{delay:100});
+            ScrollReveal().reveal('.tagline', { delay: 500 });
+            ScrollReveal().reveal('.punchline', { delay: 2000 });
+        </script>
 
 
