@@ -16,6 +16,8 @@ const {campgroundSchema, reviewSchema} = require('./schemas.js');
 const Review = require('./models/reviews');
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/review');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 mongoose.connect('mongodb://localhost:27017/yelpcamp',{
     useNewUrlParser: true,
@@ -33,6 +35,25 @@ db.once("open",()=>{
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
+app.use(flash());
+
+
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie:{
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+
+    }
+}
+app.use(session(sessionConfig));
+app.use((req, res, next)=>{
+    res.locals.success = req.flash('success');
+    next();
+})
 
 app.use('/campgrounds',campgrounds);
 app.use('/campgorunds/:id/reviews', reviews);
